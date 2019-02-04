@@ -11,8 +11,6 @@ RUN ls /composer/vendor/bin
 FROM php:7-alpine
 
 COPY --from=composer /composer/vendor /bin/composer/vendor
-ENV PATH "$PATH:/bin/composer/vendor/bin"
+RUN ln -s /bin/composer/vendor/bin/openapi /bin/openapi
 
 WORKDIR /app
-
-ENTRYPOINT ["php", "openapi"]]
